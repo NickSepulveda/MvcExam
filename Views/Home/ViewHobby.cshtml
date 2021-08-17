@@ -1,0 +1,35 @@
+<a href="/dashboardredirect/@ViewBag.ThisUser.UserId">Dashboard</a>
+
+
+<a href="/">Logout</a>
+
+<h1>@ViewBag.ThisHobby.Name</h1>
+
+<h2>Description: @ViewBag.ThisHobby.Description</h2>
+
+<a asp-action="EditHobby" asp-route-hobbyId="@ViewBag.ThisHobby.HobbyId" asp-route-userId="@ViewBag.ThisUser.UserId">Edit Hobby</a>
+
+
+
+<h3>@ViewBag.ThisHobby.Name Enthusiasts:
+    
+    @foreach(var l in ViewBag.HobbyEnthusiasts)
+    {
+        <li>@l.User.FirstName</li>
+    } 
+    
+</h3>
+
+<h2>Become an Enthusiast!</h2>
+@model Association
+        <form action="/updatehobby/@ViewBag.ThisHobby.HobbyId/@ViewBag.ThisUser.UserId" method="post">
+            <span asp-validation-for="HobbyId"></span>
+            <input type="hidden" asp-for="HobbyId" value="@ViewBag.ThisHobby.HobbyId">
+            <span asp-validation-for="UserId"></span>
+            <input type="hidden" asp-for="UserId" value="@ViewBag.ThisUser.UserId">
+            
+            
+            <input type="submit" value="Add to Hobbies">
+        </form>
+
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit a Hobby!</title>
+    </head>
+    <body>
+@model Hobby
+    <form action="/updatethathobby/@ViewBag.HobbyId/@ViewBag.UserId" method="post">
+            <p>Name:</p>
+            <span asp-validation-for="Name"></span>
+            <textarea name="Name" id="Name" cols="15" rows="1">@ViewBag.HobbyName</textarea>
+            <span asp-validation-for="Description"></span>
+            <p>Description:</p>
+            <textarea name="Description">@ViewBag.HobbyDescription</textarea>
+            <input type="submit" value="Update">
+        </form>
+    </body>    
+</html>  

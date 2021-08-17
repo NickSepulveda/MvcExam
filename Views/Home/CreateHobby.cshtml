@@ -1,0 +1,26 @@
+
+
+<a href="/dashboardredirect/@ViewBag.ThisUser.UserId">Dashboard</a>
+
+
+<a href="/">Logout</a>
+
+
+<h1>Create a Hobby</h1>
+
+@model Hobby
+<form asp-action="createhobby" method="post">
+    <div class="form-group">
+        <span asp-validation-for="Name"></span>
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+    </div>
+    <div class="form-group">
+        <span asp-validation-for="Description"></span>
+        <label asp-for="Description"></label>
+        <input type="text" asp-for="Description">
+    </div>
+    <input type="hidden" asp-for="UserId" value="@ViewBag.ThisUser.UserId">
+
+    <input type="submit" value="Create">
+</form> 

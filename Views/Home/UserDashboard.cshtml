@@ -1,0 +1,42 @@
+
+
+
+<a href="/">Logout</a>
+
+
+<h2>Welcome @ViewBag.ThisUser.FirstName @ViewBag.ThisUser.LastName!</h2>
+
+<h1>Hobbies</h1>
+
+<div>
+    <ul>
+        @{
+            if(ViewBag.AllHobbiesCount != 0)
+            {
+                @foreach(var l in ViewBag.AllHobbies)
+                {
+                        var enthusiastslist = ((IEnumerable<dynamic>)l.UsersForThisHobby);
+                        var enthusiastcount = enthusiastslist.Count();
+                    <table style="width:50%">
+                    <tr>
+                        <th>Name</th>
+                        <th>Enthusiasts</th> 
+                    </tr>
+                    <tr>
+                        <td><a href="/viewhobby/@l.HobbyId/@ViewBag.ThisUser.UserId">@l.Name</a></td>
+                        <td>@enthusiastcount</td>
+                    </tr>
+                    </table>
+                } 
+            }
+            else
+            {
+                <p>There are no hobbies for now</p>
+            }
+        }
+    
+    </ul>
+</div>
+
+
+<a href="/planhobby/@ViewBag.ThisUser.UserId">Create a Hobby</a>
